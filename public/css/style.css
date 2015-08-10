@@ -1,0 +1,17 @@
+﻿.list__item {
+  transition: 0.25s ease;
+  position: relative;
+}
+
+.list__item:active {
+  background-color: rgb(31, 31, 33);
+  color: #fff;
+}
+
+.list__item .color-preview {
+  width: 50%;
+  height: calc(100% - 10px);
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}

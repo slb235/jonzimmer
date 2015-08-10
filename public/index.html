@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+    <!-- bower:css -->
+    <!-- endbower -->
+    <link href="../bower_components/onsenui/build/css/onsenui.css" rel="stylesheet">
+    <link href="../bower_components/onsenui/build/css/onsen-css-components-blue-theme.css" rel="stylesheet">
+
+    <link href="css/style.css" rel="stylesheet">
+    <!-- bower:js -->
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/onsenui/build/js/onsenui.js"></script>
+    <script src="../bower_components/shake.js/shake.js"></script>
+    <!-- endbower -->
+    <script src="js/data.js"></script>
+    <script src="js/client.js"></script>
+
+    <script type="text/javascript">
+        var ShakeEvent = new Shake({
+            threshold: 10,
+            timeout: 2000
+        });
+        ShakeEvent.start();
+    </script>
+
+    <title>Jonzimmer</title>
+
+</head>
+<body ng-controller="JzCtrl">
+    <ons-sliding-menu menu-page="menu.html" main-page="home.html" side="left"
+                      var="menu" type="reveal" max-slide-distance="180px" swipeable="true">
+    </ons-sliding-menu>
+
+    <ons-template id="menu.html">
+        <ons-page modifier="menu-page">
+            <ons-toolbar modifier="transparent"></ons-toolbar>
+            <ons-list>
+                <div ng-repeat="scope in commands" ng-init="scopeId = $index">
+                    <ons-list-header>
+                        {{scope.title}}
+                    </ons-list-header>
+                    <ons-list-item ng-repeat="remote in scope.remotes" ng-click="openRemote(scopeId, $index)">
+                        <ons-icon icon="{{remote.icon}}" fixed-width="true"></ons-icon>
+                        {{remote.title}}
+                    </ons-list-item>
+                </div>
+            </ons-list>
+        </ons-page>
+    </ons-template>
+
+    <ons-template id="home.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button ng-click="menu.toggle()">
+                        <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">Jonzimmer</div>
+            </ons-toolbar>
+            <div style="margin: 2em;">
+                <ons-button modifier="large" ng-click="menu.toggleMenu()">
+                    <ons-icon icon="ion-arrow-right-c" size="28px" fixed-width="false"></ons-icon>
+                    Fernbedienungen
+                </ons-button>
+                <p>Swipen um Menü zu öffnen. Schütteln für zufälliges Licht.</p>
+            </div>
+        </ons-page>
+    </ons-template>
+
+    <ons-template id="remote.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button ng-click="menu.toggle()">
+                        <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    <ons-icon icon="{{remote.icon}}" fixed-width="true"></ons-icon>
+                    {{remote.title}}
+                </div>
+            </ons-toolbar>
+                <div ng-repeat="category in remote.categories" ng-init="categoryId = $index">
+                    <ons-list-header>
+                        {{category.title}}
+                    </ons-list-header>
+                    <ons-list-item ng-repeat="command in category.commands" ng-click="execute(categoryId, $index)">
+                        <ons-icon icon="{{command.icon}}" fixed-width="true"></ons-icon>
+                        {{command.title}}
+                        <div ng-if="command.color" class="color-preview" style="background-color: {{command.color}};"></div>
+                    </ons-list-item>
+                </div>
+            <ons-list>
+            </ons-list>
+        </ons-page>
+    </ons-template>
+</body>
+
+</html>
