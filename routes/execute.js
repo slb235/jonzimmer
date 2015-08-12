@@ -31,7 +31,7 @@ var ir = {
     lirc.lirc_command_run(mem, fd);
   },
   send_once: function (remote, command) {
-    lirc.lirc_command_init(mem, "irsend send_once " + remote + " " + command +"\n");
+    lirc.lirc_command_init(mem, "send_once " + remote + " " + command +"\n");
     lirc.lirc_command_run(mem, fd);
   }
 }
