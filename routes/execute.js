@@ -1,6 +1,19 @@
 ﻿var express = require('express');
 var router = express.Router();
 var shell = require('shelljs');
+var ffi = require('ffi')
+
+var lirc = ffi.Library("/home/osmc/playground/lirc/lib/.libs/liblirc_client.so", {
+        'lirc_get_local_socket': [ 'int', ['string', 'int'] ],
+        'lirc_command_init': [ 'int', ['pointer', 'string'] ],
+        'lirc_command_run': [ 'int', ['pointer', 'int']]
+});
+
+var fd = lirc.lirc_get_local_socket('/var/run/lirc/lircd', 0);
+
+var mem = new Buffer(784);
+
+
 
 var LED_MAX_IT = 5;
 var RECEIVER_A_LOT = 5;
@@ -13,10 +26,13 @@ var random_color = function( ) {
 
 var ir = {
   set_transmitter: function (transmitters) {
-    shell.exec("irsend set_transmitters " + transmitters);
+    //shell.exec("irsend set_transmitters " + transmitters);
+    lirc.lirc_command_init(mem, "set_transmitters "+ transmitters +"\n");
+    lirc.lirc_command_run(mem, fd);
   },
   send_once: function (remote, command) {
-    shell.exec("irsend send_once " + remote + " " + command);
+    lirc.lirc_command_init(mem, "irsend send_once " + remote + " " + command +"\n");
+    lirc.lirc_command_run(mem, fd);
   }
 }
 
