@@ -13,7 +13,7 @@ var random_color = function( ) {
 
 var ir = {
   set_transmitter: function (transmitters) {
-    shell.exec("irsend set_transmitters " + transmitters);
+    shell.exec("irsend set_transmitter " + transmitters);
   },
   send_once: function (remote, command) {
     shell.exec("irsend send_once " + remote + " " + command);
@@ -47,13 +47,13 @@ var led_command = function(device, command) {
 
 var remotes = {
   led1: function (command) {
-    ir.set_transmitter("1");
+    ir.set_transmitter("2");
     led_command("led2", command);
   },
 
   led2: function (command) {
-    ir.set_transmitter("2");
-    led_command("led1", command);
+    ir.set_transmitter("3");
+    led_command("led2", command);
   },
 
   led3: function(command) {

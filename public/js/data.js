@@ -622,31 +622,12 @@
                   title: "Ein",
                   icon: "ion-ios-cog",
                   execute: {
-                    device: "2",
-                    command: "on"
-                  }
-                }, {
-                  title: "Aus",
-                  icon: "ion-ios-cog-outline",
-                  execute: {
-                    device: "2",
-                    command: "off"
-                  }
-                }
-              ]
-            }, {
-              title: "Fensterlampe",
-              commands: [
-                {
-                  title: "Ein",
-                  icon: "ion-social-twitch",
-                  execute: {
                     device: "3",
                     command: "on"
                   }
                 }, {
                   title: "Aus",
-                  icon: "ion-social-twitch-outline",
+                  icon: "ion-ios-cog-outline",
                   execute: {
                     device: "3",
                     command: "off"
