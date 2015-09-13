@@ -1,7 +1,7 @@
 window.data = [
   title: "Licht"
   remotes: [
-    title: "LED 1"
+    title: "LED Leinwand"
     icon: "ion-ios-lightbulb-outline"
     remote: "led1"
     categories: [
@@ -138,7 +138,7 @@ window.data = [
       ]
     ]
   ,
-    title: "LED 2"
+    title: "LED lang"
     icon: "ion-ios-lightbulb-outline"
     remote: "led2"
     categories: [
@@ -275,7 +275,7 @@ window.data = [
       ]
     ]
   ,
-    title: "LED 3"
+    title: "LED kurz"
     icon: "ion-ios-lightbulb-outline"
     remote: "led3"
     categories: [
@@ -549,20 +549,20 @@ window.data = [
       ]
     ]
   ,
-    title: "Steckdosen"
+    title: "Licht"
     icon: "ion-outlet"
     remote: "power"
     categories: [
-      title: "Globus"
+      title: "Fensterlampe"
       commands: [
         title: "Ein"
-        icon: "ion-social-dribbble"
+        icon: "ion-ios-photos"
         execute:
           device: "1"
           command: "on"
       ,
         title: "Aus"
-        icon: "ion-social-dribbble-outline"
+        icon: "ion-ios-photos-outline"
         execute:
           device: "1"
           command: "off"
@@ -603,69 +603,6 @@ window.data = [
   title: "Geräte"
   icon: "ion-soup-can-outline"
   remotes: [
-    title: "Verstärker"
-    icon: "ion-volume-high"
-    remote: "receiver"
-    categories: [
-        title: "Power"
-        commands: [
-          title: "Ein / Aus"
-          icon: "ion-power"
-          execute:
-            remote: "receiver"
-            command: "key_power"
-        ]
-      ,
-        title: "Lautstärke"
-        commands: [
-          title: "Deutlich lauter"
-          icon: "ion-volume-high"
-          execute: "key_volumeupalot"
-        ,
-          title: "Lauter"
-          icon: "ion-volume-high"
-          execute: "key_volumeup"
-        ,
-          title: "Leiser"
-          icon: "ion-volume-low"
-          execute: "key_volumedown"
-        ,
-          title: "Deutlich leiser"
-          icon: "ion-volume-low"
-          execute: "key_volumedownalot"
-        ,
-          title: "Mute"
-          icon: "ion-volume-mute"
-          execute: "key_mute"
-        ]
-
-      ,
-        title: "Eingang"
-        commands: [
-          title: "Raspberry Pi 2"
-          icon: "ion-monitor"
-          execute: "key_b"
-        ,
-          title: "XBOX 360"
-          icon: "ion-ios-game-controller-b"
-          execute: "key_g"
-        ,
-          title: "HDMI Anschluss"
-          icon: "ion-code-working"
-          execute: "key_dvd"
-        ,
-          title: "Klinken Anschluss"
-          icon: "ion-ipod"
-          execute: "key_cd"
-        ,
-          title: "USB Anschluss"
-          icon: "ion-iphone"
-          execute: "key_u"
-        ]
-      
-
-    ]
-  ,
     title: "Beamer"
     icon: "ion-easel"
     remote: "beamer"
