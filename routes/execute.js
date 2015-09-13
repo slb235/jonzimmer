@@ -1,7 +1,8 @@
-﻿var express = require('express');
+var express = require('express');
 var router = express.Router();
 var shell = require('shelljs');
 var ffi = require('ffi')
+var sleep = require('sleep');
 
 var lirc = ffi.Library("/home/osmc/playground/lirc/lib/.libs/liblirc_client.so", {
         'lirc_get_local_socket': [ 'int', ['string', 'int'] ],
@@ -13,9 +14,7 @@ var fd = lirc.lirc_get_local_socket('/var/run/lirc/lircd', 0);
 
 var mem = new Buffer(784);
 
-
-
-var LED_MAX_IT = 5;
+var LED_MAX_IT = 17;
 var RECEIVER_A_LOT = 5;
 var RANDOM_COLORS = ['key_a', 'key_b', 'key_c', 'key_d', 'key_e', 'key_f', 'key_g', 'key_h', 'key_i', 'key_j', 'key_k', 'key_l', 'key_m', 'key_n', 'key_o', 'key_p'];
 
@@ -104,10 +103,11 @@ var remotes = {
   },
 
   beamer: function(command) {
-    ir.set_transmitter("3");
+    ir.set_transmitter("4");
     switch(command) {
       case "key_poweroff":
         ir.send_once('beamer', 'key_power');
+	sleep.usleep(100000);
         ir.send_once('beamer', 'key_power');
         break;
       default:
